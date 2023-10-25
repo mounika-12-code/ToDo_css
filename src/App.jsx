@@ -66,6 +66,7 @@ function App() {
         <input
           className='input in'
           type='text'
+          autoFocus='autofocus'
           placeholder='Enter your task...'
           value={taskText}
           onChange={(e) => setTaskText(e.target.value)}
@@ -74,6 +75,7 @@ function App() {
           {edit !== null ? "Update Task" : "Add Task"}
         </button>
       </div>
+      <h2>To-Do List</h2>
       <div className='three_but'>
         <button className='one but' onClick={() => setFilterType("all")}>
           All

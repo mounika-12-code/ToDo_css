@@ -2,7 +2,8 @@
   width: 80%;
   font-family: Arial, Helvetica, sans-serif;
   margin: 0 auto;
-  border: 1px red solid;
+
+  /* border: 1px red solid; */
 }
 h1 {
   text-align: center;
@@ -12,89 +13,216 @@ h1 {
 .task-input {
   /* margin: 60px; */
   margin: auto;
-  padding: 10px; /* Add padding for inner spacing */
+  padding: 10px;
   border: 1px solid black;
   display: flex;
   flex-direction: column;
   font-size: larger;
-  background-color: red;
-  width: 85%;
+  /* background-color: red; */
+  width: 70%;
 }
 
 .input {
-  height: 40px;
-  width: calc(100% - 56px); /* Adjusted width considering margin and padding */
-  margin-top: 10px; /* Adjusted margin for better spacing */
+  height: 30px;
+  width: calc(100% - 56px);
   margin-left: 18px;
   font-size: 16px;
-  padding: 8px; /* Add padding for inner spacing */
+  border: 1px solid;
+  padding: 8px;
+  margin-top: 10px;
+}
+.in .input input:focus {
+  border-color: rgb(110, 62, 183);
 }
 
 .add_but {
   height: 40px;
-  width: calc(100% - 36px); /* Adjusted width considering margin and padding */
+  width: calc(100% - 36px);
   margin-top: 10px;
   margin-bottom: 10px;
   margin-left: 18px;
   font-size: 20px;
   font-weight: bold;
   background-color: #16a3b7;
+  border: none;
+  color: white;
+  border-radius: 4px;
 }
 .three_but {
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: space-evenly;
+  margin-top: 20px;
+  margin-left: 10px;
 }
 .but {
+  color: white;
   width: 60px;
   height: 50px;
   background-color: #16a3b7;
   font-weight: bold;
   border-radius: 3px;
+  border: none;
+  margin-bottom: 10px;
 }
+
 .Don_all {
   display: flex;
   flex-direction: row;
   border: 1px rgb(198, 53, 53) solid;
   padding: 10px;
-  width: 85%;
+  width: 60%;
+
   /* column-gap: 65%; */
   align-items: center;
   justify-content: space-between;
   margin: auto;
+  margin-bottom: 10px;
+}
+.check {
+  border-bottom: green;
+  width: 30px;
+  height: 17px;
+}
+.task-list {
+  margin-right: 30px;
 }
 .list {
   font-weight: bold;
-  text-overflow: hidden;
   margin-right: 10px;
 }
 .Allthree_but {
-  width: 10%;
+  /* width: 10%; */
   height: auto;
   display: flex;
   align-items: center;
   justify-content: space-around;
 }
-/* .task-list {
-  background-color: aquamarine;
-  width: 85%;
-} */
+
 .Allthree_but button {
   font-size: 16px;
-  /* background-color: #d84848; */
-  margin-left: 0px;
+  background-color: #16a3b7;
+  margin-left: 5px;
   border-radius: 3px;
   padding: 5px;
 }
-input[type="checkbox"]:checked {
-  border-color: green !important;
-  background-color: green !important;
-}
+
 .delete {
-  /* height: 40px; */
-  font-size: 20px;
-  color: red;
+  height: 25px;
+  font-size: 30px;
+  color: rgb(66, 184, 45);
 }
 .edit {
-  color: rgb(208, 198, 20);
+  color: rgb(244, 241, 35);
+  font-size: 30px;
+  padding: 5px;
+  height: 25px;
+}
+.two_but {
+  display: flex;
+  width: 90%;
+  margin-top: 50px;
+  justify-content: space-around;
+}
+.btn {
+  background-color: red;
+  border: none;
+  border-radius: 4px;
+  height: 50px;
+  color: white;
+  /* margin-left: 20px; */
+}
+.del_all {
+  margin-left: 50px;
+}
+.del_do_all {
+  margin-left: 80px;
+}
+h2 {
+  text-align: center;
+}
+@media screen and (max-width: 320px) {
+  .task-list {
+    margin: auto;
+    width: 50%;
+    /* background-color: aqua; */
+    padding: 10px;
+  }
+  .three_but {
+    margin-bottom: 5px;
+  }
+  .Don_all {
+    margin-right: 40px;
+    width: 90%;
+  }
+  .two_but {
+    /* background-color: aqua; */
+  }
+  .del_do_all {
+    margin-left: 50px;
+  }
+  .check {
+    height: 15px;
+  }
+  .edit {
+    height: 20px;
+  }
+  .delete {
+    height: 20px;
+  }
+}
+@media screen and (max-width: 355px) {
+  .task-list {
+    margin: auto;
+    width: 90%;
+  }
+  .three_but {
+    margin-bottom: 5px;
+  }
+}
+@media screen and (max-width: 375px) {
+  .del_do_all {
+    margin-right: 5px;
+  }
+  .two_but {
+    width: 80%;
+  }
+  .check {
+    height: 15px;
+  }
+  .edit {
+    height: 20px;
+  }
+  .delete {
+    height: 20px;
+  }
+}
+@media screen and (max-width: 425px) {
+  .two_but {
+    margin-right: 10px;
+    width: 80%;
+  }
+  .check {
+    height: 15px;
+  }
+  .edit {
+    height: 20px;
+  }
+  .delete {
+    height: 20px;
+  }
+}
+@media screen and (max-width: 768px) {
+  .in {
+    border: 1px solid;
+  }
+  .check {
+    height: 15px;
+  }
+  .edit {
+    height: 20px;
+  }
+  .delete {
+    height: 20px;
+  }
 }

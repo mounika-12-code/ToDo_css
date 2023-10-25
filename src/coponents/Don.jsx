@@ -1,7 +1,7 @@
 /* eslint-disable prettier/prettier */
 /* eslint-disable react/prop-types */
 
-import {BsPencilSquare} from "react-icons/bs"
+import {BiSolidPencil} from "react-icons/bi"
 import {AiFillDelete} from "react-icons/ai"
 
 function Done({
@@ -47,7 +47,7 @@ function Done({
                   className='delete'
                   onClick={() => deleteTask(task.id)}
                 />
-                <BsPencilSquare
+                <BiSolidPencil
                   className='edit'
                   onClick={() => handleEdit(task.id)}
                 />
@@ -57,8 +57,12 @@ function Done({
         </ul>
       </div>
       <div className='two_but'>
-        <button onClick={handleDeleteDoneTasks}>Delete all Done tasks</button>
-        <button onClick={handleDeleteAllTasks}>Delete all tasks</button>
+        <button className='del_do_all btn' onClick={handleDeleteDoneTasks}>
+          Delete done tasks
+        </button>
+        <button className='del_all btn' onClick={handleDeleteAllTasks}>
+          Delete all tasks
+        </button>
       </div>
     </>
   )
