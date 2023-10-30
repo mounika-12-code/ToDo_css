@@ -79,7 +79,15 @@ function App() {
           }}
         />
         {error && (
-          <div className='error-message' style={{color: "red", margin: "10px"}}>
+          <div
+            className='error-message'
+            style={{
+              color: "red",
+              margin: "10px",
+              marginLeft: "20px",
+              fontSize: "16px",
+            }}
+          >
             {error}
           </div>
         )}
