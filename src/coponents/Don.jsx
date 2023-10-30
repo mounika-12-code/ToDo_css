@@ -29,8 +29,10 @@ function Done({
             <div key={task.id} className='Don_all'>
               <div
                 className='list'
+                // color='black'
                 style={{
                   textDecoration: task.complete ? "line-through" : "none",
+                  color: task.complete ? "red" : "black",
                 }}
               >
                 {task.text}
