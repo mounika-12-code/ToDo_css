@@ -1,6 +1,6 @@
 /* eslint-disable prettier/prettier */
 /* eslint-disable react/prop-types */
-
+import React from "react"
 import {BiSolidPencil} from "react-icons/bi"
 import {AiFillDelete} from "react-icons/ai"
 

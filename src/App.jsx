@@ -6,7 +6,7 @@ function App() {
   const [taskText, setTaskText] = useState("")
   const [edit, setEdit] = useState(null)
   const [filterType, setFilterType] = useState("all")
-
+  const [error, seterror] = useState("")
   const filteredTasks = tasks.filter((task) => {
     if (filterType === "all") {
       return true
@@ -19,7 +19,10 @@ function App() {
   })
 
   const addTask = () => {
-    if (taskText.trim() !== "") {
+    if (taskText.trim() === "") {
+      seterror("Please enter text here...")
+    } else {
+      seterror("")
       if (edit !== null) {
         const updatedTasks = tasks.map((task) =>
           task.id === edit ? {...task, text: taskText} : task,
@@ -27,6 +30,7 @@ function App() {
         setTasks(updatedTasks)
         setEdit(null)
       } else {
+        // seterror("")
         const newTask = {
           id: tasks.length,
           text: taskText,
@@ -69,8 +73,16 @@ function App() {
           autoFocus='autofocus'
           placeholder='Enter your task...'
           value={taskText}
-          onChange={(e) => setTaskText(e.target.value)}
+          onChange={(e) => {
+            setTaskText(e.target.value)
+            seterror("")
+          }}
         />
+        {error && (
+          <div className='error-message' style={{color: "red", margin: "10px"}}>
+            {error}
+          </div>
+        )}
         <button className='add_but' onClick={addTask}>
           {edit !== null ? "Update Task" : "Add Task"}
         </button>
