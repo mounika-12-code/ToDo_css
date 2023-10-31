@@ -5,37 +5,37 @@ module.exports = {
   },
   settings: {
     react: {
-      version: 'detect',
+      version: "detect",
     },
   },
   extends: [
-    'eslint:recommended',
-    'plugin:react/recommended',
-    'plugin:prettier/recommended',
-    'plugin:react-hooks/recommended',
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:prettier/recommended",
+    "plugin:react-hooks/recommended",
   ],
   overrides: [
     {
-      files: ['*.jsx', '*.js'],
+      files: ["*.jsx", "*.js"],
       env: {
         node: true,
       },
     },
   ],
   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
+    ecmaVersion: "latest",
+    sourceType: "module",
     ecmaFeatures: {
       jsx: true,
     },
   },
-  plugins: ['react', 'prettier'],
+  plugins: ["react", "prettier"],
   rules: {
-    'react-hooks/rules-of-hooks': 'error',
-    'react/react-in-jsx-scope': 'error',
-    'react/jsx-uses-react': 'error',
-    'react/jsx-uses-vars': 'error',
-    'react/prop-types': 'error',
-    'react/no-array-index-key': 'error',
+    "react-hooks/rules-of-hooks": "error",
+    "react/react-in-jsx-scope": "error",
+    "react/jsx-uses-react": "error",
+    "react/jsx-uses-vars": "error",
+    "react/prop-types": "error",
+    "react/no-array-index-key": "error",
   },
 }
