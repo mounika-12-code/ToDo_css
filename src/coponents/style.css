@@ -5,6 +5,14 @@
 
   /* border: 1px red solid; */
 }
+.error-message {
+  color: red;
+  margin: 10px;
+  margin-left: 20px;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  font-size: large;
+  /* font-weight: bold; */
+}
 h1 {
   text-align: center;
   margin-top: 20px;
@@ -79,11 +87,18 @@ h1 {
   margin: auto;
   margin-bottom: 10px;
 }
-.check {
-  border-bottom: green;
-  width: 30px;
-  height: 17px;
+/* Dones.css */
+.custom-checkbox {
+  width: 15px;
+  height: 20px;
+  border: 2px solid #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: large;
 }
+
 .task-list {
   margin-right: 30px;
 }
@@ -101,7 +116,7 @@ h1 {
 
 .Allthree_but button {
   font-size: 16px;
-  background-color: #16a3b7;
+  background-color: #31d022;
   margin-left: 5px;
   border-radius: 3px;
   padding: 5px;
@@ -110,13 +125,15 @@ h1 {
 .delete {
   height: 25px;
   font-size: 30px;
-  color: rgb(66, 184, 45);
+  color: rgb(242, 7, 7);
+  padding-left: 10px;
 }
 .edit {
   color: rgb(244, 241, 35);
   font-size: 30px;
   padding: 5px;
   height: 25px;
+  margin-right: 5px;
 }
 .two_but {
   display: flex;

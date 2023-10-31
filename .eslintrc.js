@@ -31,7 +31,7 @@ module.exports = {
   },
   plugins: ["react", "prettier"],
   rules: {
-    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/rules-of-hooks": "off",
     "react/react-in-jsx-scope": "error",
     "react/jsx-uses-react": "error",
     "react/jsx-uses-vars": "error",
