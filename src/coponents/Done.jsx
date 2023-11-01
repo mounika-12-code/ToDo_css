@@ -1,4 +1,3 @@
-/* eslint-disable no-undef */
 import PropTypes from "prop-types"
 import {Checkbox, Button, Box} from "@mui/material"
 import {BiSolidPencil} from "react-icons/bi"
@@ -13,6 +12,7 @@ function Done({
   tasks,
 }) {
   const handleDeleteDoneTasks = () => {
+    console.log("15line ")
     const updatedTasks = tasks.filter((task) => !task.complete)
     setTasks(updatedTasks)
   }
@@ -27,26 +27,7 @@ function Done({
         sx={{
           display: "flex",
           flexDirection: "column",
-          width: "60%",
-          "@media screen and (max-width: 320px)": {
-            width: "100%",
-          },
-          "@media screen and (max-width: 375px)": {
-            width: "80%",
-            // backgroundColor: 'aquamarine',
-          },
-          "@media screen and (max-width: 425px)": {
-            width: "80%",
-          },
-          "@media screen and (max-width: 899px)": {
-            width: "80%",
-          },
-          "@media screen and (max-width: 1024px)": {
-            width: "75%",
-          },
-          "@media screen and (max-width: 1075px)": {
-            width: "73%",
-          },
+          width: {xs: "100%", sm: "100%", md: "92%", lg: "90%"},
         }}
       >
         <ul
@@ -54,11 +35,7 @@ function Done({
           style={{display: "flex", flexDirection: "column"}}
         >
           {filteredTasks.map((task) => (
-            <li
-              key={task.id}
-              elevation={3}
-              style={{listStyle: "none", textDecoration: "none"}}
-            >
+            <li key={task.id} elevation={3} style={{listStyle: "none"}}>
               <Box
                 style={{
                   fontWeight: "bold",
@@ -67,7 +44,6 @@ function Done({
                 sx={{
                   display: "flex",
                   flexDirection: "row",
-                  // backgroundColor: 'rebeccapurple',
                   marginBottom: "10px",
                   alignItems: "center",
                   justifyContent: "space-between",
@@ -89,7 +65,6 @@ function Done({
                 <Box
                   sx={{
                     display: "flex",
-                    // justifyContent: 'center',
                     alignItems: "center",
                   }}
                 >
@@ -121,57 +96,24 @@ function Done({
         sx={{
           display: "flex",
           justifyContent: "space-evenly",
-          width: "60%",
-          "@media screen and (max-width: 320px)": {
-            width: "100%",
-            // height: '50%',
+          width: {
+            xs: "80%",
+            sm: "90%",
+            md: "90%",
           },
-          "@media screen and (max-width: 375px)": {
-            width: "80%",
-            // backgroundColor: 'aquamarine',
-          },
-          "@media screen and (max-width: 425px)": {
-            width: "100%",
-          },
-          "@media screen and (max-width: 786px)": {
-            width: "80%",
-          },
+          height: {md: "50px"},
         }}
       >
         <Button
-          className='del_do_all btn'
+          fontSize='20px'
           onClick={handleDeleteDoneTasks}
           variant='contained'
-          color='primary'
           sx={{
             backgroundColor: "red",
-            "@media screen and (max-width: 320px)": {
-              width: "30%",
-            },
-            "@media screen and (max-width: 375px)": {
-              width: "30%",
-              fontSize: "10px",
-            },
-            "@media screen and (max-width: 425px)": {
-              width: "40%",
-              // marginLeft: '10px',
-              // textAlign: 'center',
-            },
-            "@media screen and (max-width: 439px)": {
-              width: "30%",
-              height: "60px",
-              // marginLeft: '10px',
-              textAlign: "center",
-              // lineheight: 1.2,
-              // whitespace: 'pre - line',
-              fontSize: "10px",
-            },
-            "@media screen and (max-width: 786px)": {
-              width: "30%",
-            },
-            "@media screen and (max-width: 899px)": {
-              width: "40%",
-              height: "60px",
+            width: {
+              xs: "40%",
+              sm: "40%",
+              md: "30%",
             },
           }}
         >
@@ -181,32 +123,17 @@ function Done({
           className='del_all btn'
           onClick={handleDeleteAllTasks}
           variant='contained'
-          color='secondary'
           sx={{
             backgroundColor: "red",
-            "@media screen and (max-width: 320px)": {
-              width: "30%",
-            },
-            "@media screen and (max-width: 375px)": {
-              width: "30%",
-              fontSize: "10px",
-            },
-            "@media screen and (max-width: 425px)": {
-              width: "30%",
-              fontSize: "10px",
-            },
-            "@media screen and (max-width: 786px)": {
-              width: "30%",
-            },
-            "@media screen and (max-width: 899px)": {
-              width: "40%",
-              height: "60px",
+            width: {
+              xs: "40%",
+              sm: "40%",
+              md: "30%",
             },
           }}
         >
           Delete all tasks
         </Button>
-        {/* <button>submit</button> */}
       </Box>
     </>
   )
