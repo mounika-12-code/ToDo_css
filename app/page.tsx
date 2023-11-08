@@ -1,95 +1,145 @@
-import Image from 'next/image'
-import styles from './page.module.css'
+'use client'
+import React, { useEffect, useState } from 'react'
+import {
+  Container,
+  TextField,
+  Typography,
+  Button,
+  FormControl,
+} from '@mui/material'
+import Link from 'next/link'
+import { useSearchParams } from 'next/navigation'
+type Task = {
+  id: string
+  matter: string
+  completed: boolean
+}
 
-export default function Home() {
+export default function Page() {
+  const search = useSearchParams()
+  const routerId = search.get('id')
+  const initialName = search.get('name')
+  const storedText = localStorage.getItem('inputValue')
+  const value = storedText || ''
+  const [text, setText] = useState<string>(value)
+
+  const storedTasks = localStorage.getItem('tasks')
+  const array = storedTasks ? JSON.parse(storedTasks) : []
+  const [tasks, setTasks] = useState<Task[]>(array)
+  const isLocalStorageAvailable =
+    typeof window !== 'undefined' && window.localStorage
+
+  useEffect(() => {
+    if (initialName) {
+      setText(initialName)
+    }
+  }, [initialName])
+
+  useEffect(() => {
+    if (isLocalStorageAvailable) {
+      localStorage.setItem('inputValue', text)
+    }
+  }, [text])
+  useEffect(() => {
+    if (isLocalStorageAvailable) {
+      localStorage.setItem('tasks', JSON.stringify(tasks))
+    }
+  }, [tasks])
+
+  const handleAdd = (e: React.FormEvent) => {
+    e.preventDefault()
+
+    if (routerId) {
+      const updatedTasks: Task[] = tasks.map((task) => {
+        if (task.id === routerId) {
+          return {
+            ...task,
+            matter: text,
+          }
+        }
+        return task
+      })
+
+      setTasks(updatedTasks)
+      if (isLocalStorageAvailable) {
+        localStorage.setItem('tasks', JSON.stringify(updatedTasks))
+      }
+    } else {
+      if (text.trim() !== '') {
+        const newTask: Task = {
+          id: crypto.randomUUID(),
+          matter: text,
+          completed: false,
+        }
+
+        const updatedTasks: Task[] = [...tasks, newTask]
+        setTasks(updatedTasks)
+        if (isLocalStorageAvailable) {
+          localStorage.setItem('tasks', JSON.stringify(updatedTasks))
+        }
+        setText('')
+      }
+    }
+  }
+
   return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>app/page.tsx</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
-      </div>
-
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
+    <Container
+      sx={{
+        width: { xs: '100%', md: '80%', lg: '80%' },
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        marginTop: '50px',
+      }}
+    >
+      <Typography variant="h4" sx={{ textAlign: 'center', marginY: '15px' }}>
+        To-Do Input
+      </Typography>
+      <FormControl
+        component="form"
+        onSubmit={handleAdd}
+        sx={{
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          width: { xs: '90%', sm: '90%', md: '80%', lg: '80%' },
+        }}
+      >
+        <TextField
+          value={text}
+          onChange={(e) => setText(e.target.value)}
+          id="text"
+          label="Enter the task.."
+          variant="outlined"
+          fullWidth
+          margin="normal"
         />
-      </div>
 
-      <div className={styles.grid}>
-        <a
-          href="https://beta.nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
+        <Button
+          type="submit"
+          variant="contained"
+          // color="primary"
+          onClick={handleAdd}
+          // style={{width:"70%"}}
+          sx={{
+            width: '100%',
+            marginTop: '10px',
+            height: '50px',
+            backgroundColor: 'red',
+            '&:hover': {
+              bgcolor: '#7be8f4',
+            },
+          }}
         >
-          <h2>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p>Explore the Next.js 13 playground.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
+          <Link
+            style={{ color: 'white', textDecoration: 'none' }}
+            href={{ pathname: '/about', query: { text } }}
+            passHref
+          >
+            Add Task
+          </Link>
+        </Button>
+      </FormControl>
+    </Container>
   )
 }
